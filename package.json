@@ -1,62 +1,69 @@
 {
-	"name": "imgcompile",
-	"version": "0.0.0",
-	"description": "Optimize and compress JPG, JPEG, PNG, GIF or SVG.",
-	"homepage": "https://github.com/cjpatoilo/imgcompile",
-	"repository": "cjpatoilo/imgcompile",
-	"license": "MIT",
-	"author": "CJ Patoilo <cjpatoilo@gmail.com>",
-	"bin": "bin/cli.js",
-	"main": "src/index.js",
-	"files": [
-		"bin/cli.js",
-		"src/index.js"
-	],
-	"keywords": [
-		"automation",
-		"cli",
-		"compile",
-		"compress",
-		"framework",
-		"gif",
-		"image",
-		"img",
-		"jpeg",
-		"jpg",
-		"minified",
-		"minify",
-		"npm",
-		"optimize",
-		"optimize",
-		"package",
-		"png",
-		"render",
-		"svg"
-	],
-	"ignore": [
-		".appveyor.yml",
-		".editorconfig",
-		".github",
-		".gitignore",
-		".travis.yml"
-	],
-	"dependencies": {
-		"gulp": "^3.9.1",
-		"gulp-imagemin": "^3.1.1"
-	},
-	"devDependencies": {
-		"ava": "^0.17.0",
-		"editorconfig-tools": "^0.1.1",
-		"eslint": "^3.12.1",
-		"eslint-config-styled": "^0.0.0",
-		"husky": "^0.12.0",
-		"nyc": "^10.0.0"
-	},
-	"engines": {
-		"node": ">=4"
-	},
-	"scripts": {
-		"precommit": "npm test",
-		"test": "nyc ava && eslint . -c styled --ignore-path .gitignore && editorconfig-tools check ."
-	}
+  "name": "imgcompile",
+  "version": "0.1.0",
+  "description": "Optimize and compress JPG, JPEG, PNG, GIF or SVG.",
+  "homepage": "https://github.com/cjpatoilo/imgcompile",
+  "repository": "cjpatoilo/imgcompile",
+  "license": "MIT",
+  "author": "CJ Patoilo <cjpatoilo@gmail.com>",
+  "bin": "cli.js",
+  "main": "index.js",
+  "files": [
+    "cli.js",
+    "index.js"
+  ],
+  "keywords": [
+    "automation",
+    "cli",
+    "compile",
+    "compress",
+    "framework",
+    "gif",
+    "image",
+    "img",
+    "jpeg",
+    "jpg",
+    "minified",
+    "minify",
+    "npm",
+    "optimize",
+    "optimize",
+    "package",
+    "png",
+    "render",
+    "svg"
+  ],
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0"
+  },
+  "devDependencies": {
+    "ava": "^3.11.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier-standard": "^16.4.1"
+  },
+  "scripts": {
+    "lint": "prettier-standard --check",
+    "test": "ava"
+  },
+  "engines": {
+    "node": "^12.18.0",
+    "npm": "^6.14.5"
+  },
+  "prettier": {
+    "jsxSingleQuote": false,
+    "trailingComma": "all"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*": [
+      "prettier-standard --format",
+      "git add"
+    ]
+  }
 }
